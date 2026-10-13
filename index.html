@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>セカンドブレイン｜まとめノート</title>
-<meta name="description" content="ChatGPTとの音声対話、iPhoneショートカット、Claude Codeでの整形、公開まで。頭で覚えるのではなく、話した言葉をそのまま知識に変えるセカンドブレインの作り方。">
+<meta name="description" content="話す、保存する、整える、育てる、公開する。ChatGPTとの音声対話からObsidian、Claude Code、ホームページまで、話した思考を知識に変えて循環させるセカンドブレインの作り方。">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -14,7 +14,7 @@
     --serif:"Noto Serif JP",serif; --sans:"Noto Sans JP",system-ui,sans-serif;
     --mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
   }
-  @media(prefers-color-scheme:dark){:root{
+  @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
     --bg:#14161A; --surface:#1C1F24; --surface2:#22262C; --ink:#E9E9E3; --muted:#A3A79F;
     --faint:#6C7068; --line:#2C2F34; --line-soft:#24272C;
     --accent:#6FB3B6; --accent-ink:#8AC8CA; --accent-wash:#1d2a2a;
@@ -76,6 +76,25 @@
   .benefit p{margin:0;font-size:14.5px;color:var(--muted);line-height:1.8}
   @media(max-width:560px){.benefits{grid-template-columns:1fr}}
 
+  .toc{display:flex;flex-wrap:wrap;gap:6px 16px;margin:24px 0 0;padding:0;list-style:none;font-size:.82rem}
+  .toc li{margin:0}
+  .toc a{text-decoration:none}
+  .cycle{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:22px 0 8px;font-size:.84rem}
+  .cycle span{padding:6px 12px;background:var(--accent-wash);border-radius:999px;color:var(--ink)}
+  .cycle i{font-style:normal;color:var(--faint)}
+  .stages{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:14px 0 16px}
+  @media(min-width:560px){.stages{grid-template-columns:repeat(4,1fr)}}
+  .stages div{padding:12px 14px;border:1px solid var(--line);background:var(--surface);border-radius:4px;font-size:13.5px;line-height:1.7;color:var(--muted)}
+  .stages b{display:block;font-family:var(--serif);color:var(--ink);font-size:14.5px}
+  table.roles{width:100%;border-collapse:collapse;margin:20px 0 6px;font-size:14.5px}
+  table.roles th,table.roles td{text-align:left;vertical-align:top;padding:11px 10px;border-bottom:1px solid var(--line)}
+  table.roles th{font-family:var(--serif);font-weight:600;white-space:nowrap;padding-left:0;width:9.5em}
+  table.roles td{color:var(--muted)}
+  .src{border-top:1px solid var(--line);margin-top:16px}
+  .src a{display:flex;justify-content:space-between;gap:14px;padding:10px 2px;border-bottom:1px solid var(--line-soft);text-decoration:none;color:var(--ink);font-size:14.5px}
+  .src a:hover{color:var(--accent-ink)}
+  .src small{color:var(--faint);font-family:var(--mono);font-size:12px;white-space:nowrap}
+  footer .related{font-size:14px;color:var(--muted);margin:0 0 16px}
   footer{margin-top:10px;padding:34px 0 60px;border-top:1px solid var(--line)}
   footer .back{font-family:var(--mono);font-size:12.5px;color:var(--muted);text-decoration:none}
   footer .back:hover{color:var(--accent-ink)}
@@ -92,10 +111,29 @@
     <p class="kicker">SECOND BRAIN</p>
     <h1>セカンドブレイン</h1>
     <p class="mn-tagline">話した思考を、知識に変える。</p>
-    <p class="lead">頭で覚えるのではなく、話した言葉をそのまま資産にする。ChatGPTとの音声対話から、iPhoneショートカット、Claude Codeでの整形、公開まで——実際に動いている仕組みを、そのまま手順として残す。</p>
+    <p class="lead">頭で覚えるのではなく、話した言葉をそのまま資産にする。ChatGPTとの音声対話から、iPhoneショートカット、Obsidian、Claude Codeでの整形、公開まで——実際に動いている仕組みを、そのまま手順として残す。</p>
+    <ul class="toc">
+      <li><a href="#purpose">何のための仕組みか</a></li>
+      <li><a href="#why-voice">なぜ「話す」のか</a></li>
+      <li><a href="#overview">5つのステップ</a></li>
+      <li><a href="#steps">やり方</a></li>
+      <li><a href="#tools">道具の役割</a></li>
+      <li><a href="#ai">AIとの関係</a></li>
+      <li><a href="#design">設計の勘所</a></li>
+    </ul>
   </header>
 
-  <section>
+  <section id="purpose">
+    <p class="eyebrow">何のための仕組みか</p>
+    <h2>記録ではなく、循環をつくる</h2>
+    <div class="measure">
+      <p><a href="../way-of-life/">生き方の指針</a>で確かめたのは、知ること自体に価値がある、ということでした。役に立つかどうかとは関係なく、世界を知り、考え、また知りたくなる。セカンドブレインは、その好奇心を消えないように受け止める道具です。</p>
+      <p>ただし、目的は大量の記録を残すことではありません。記録が次の思考や行動につながり、考えが少しずつ更新されていくこと。答えを貯めるのではなく、<strong>いまの仮説</strong>を持ち、変わったら変わったこと自体を残します。</p>
+    </div>
+    <div class="cycle"><span>考える</span><i>→</i><span>記録する</span><i>→</i><span>見える形にする</span><i>→</i><span>気づく</span><i>→</i><span>考えを更新する</span><i>→</i><span>試す</span><i>→</i><span>結果を見る</span><i>→</i><span>また考える</span></div>
+  </section>
+
+  <section id="why-voice">
     <p class="eyebrow">なぜ「話す」のか</p>
     <h2>いいアイデアは、机の前では出てこない</h2>
     <div class="measure">
@@ -106,24 +144,26 @@
     <p class="measure">これは「知識を蓄積している」のではなく、<strong>知識を再構成している</strong>。話し、整理し、可視化し、俯瞰し、また考える。この循環そのものが学習システムになる。</p>
   </section>
 
-  <section>
+  <section id="overview">
     <p class="eyebrow">全体像</p>
-    <h2>4つのステップ</h2>
+    <h2>5つのステップ</h2>
     <div class="flow">
       <div class="flow-track">
-        <div class="fnode"><span class="n">STEP 1</span><span class="t">声で壁打ち（ChatGPT）</span></div>
+        <div class="fnode"><span class="n">STEP 1</span><span class="t">話す・呟く（ChatGPT）</span></div>
         <div class="farrow">→</div>
         <div class="fnode"><span class="n">STEP 2</span><span class="t">ショートカットで保存</span></div>
         <div class="farrow">→</div>
         <div class="fnode"><span class="n">STEP 3</span><span class="t">Claude Codeで整える</span></div>
         <div class="farrow">→</div>
-        <div class="fnode"><span class="n">STEP 4</span><span class="t">ホームページとして公開</span></div>
+        <div class="fnode"><span class="n">STEP 4</span><span class="t">考えの状態を育てる</span></div>
+        <div class="farrow">→</div>
+        <div class="fnode"><span class="n">STEP 5</span><span class="t">選んで公開する</span></div>
       </div>
     </div>
-    <p class="measure" style="margin-top:20px">要点は、<strong>「思いつく」と「整える」と「公開する」を分けること</strong>。思いつく瞬間は自由に、整えるのはAIに、公開の判断は自分に。役割をずらすと、続けられる仕組みになる。</p>
+    <p class="measure" style="margin-top:20px">要点は、<strong>「思いつく」と「整える」と「育てる」と「公開する」を分けること</strong>。思いつく瞬間は自由に、整えるのはAIに、育てるのは時間をかけて、公開の判断は自分に。役割をずらすと、続けられる仕組みになる。</p>
   </section>
 
-  <section>
+  <section id="steps">
     <p class="eyebrow">手順</p>
     <h2>ステップごとのやり方</h2>
 
@@ -137,6 +177,7 @@
           <li>自分 … 問いを持つ／生活する／話す</li>
           <li>AI … 壁打ち／考えの整理／仮説の構造化／タイトル付け／関連の提案</li>
         </ul>
+        <p>会話にするほどでもない小さな気づき——「これ、不便だな」と思った瞬間なども、<strong>文章を書かずに音声で呟いて</strong>残す。書こうとすると止まってしまうことも、呟くだけなら逃さない。</p>
       </div>
     </div>
 
@@ -168,9 +209,24 @@
     <div class="step">
       <div class="num">4</div>
       <div>
-        <h3>ホームページとして公開する</h3>
+        <h3>考えの状態を育てる</h3>
+        <p>残すのは情報そのものより、<strong>その考えがいまどの段階にあるか</strong>。ノートに状態を付けておき、週に一度の振り返りで見直して、熟したものを次の段階へ進める。</p>
+        <div class="stages">
+          <div><b>種</b>思いつき・経験・疑問</div>
+          <div><b>検討中</b>考え始めた</div>
+          <div><b>整理中</b>形が見えてきた</div>
+          <div><b>確立</b>自分の考え・方法になった</div>
+        </div>
+        <p>未整理なものにも価値がある。「整理できていない＝失敗」ではなく、「いま検討中」という状態として置いておく。悩みは無理に結論に変えない。結論だけでなく、<strong>経験 → 悩み → 考え → 気づき → 結論</strong>という形成の過程を残す。</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">5</div>
+      <div>
+        <h3>選んで公開する</h3>
         <p>整った知識を、<strong>ホームページとして公開する</strong>。日々の思いつきは時系列のログ（つぶやき）へ、まとまった思想や知識はテーマごとに独立した一枚のページへ。自分が「これは残したい」と思ったものだけを、形にして外に出す。</p>
-        <p>公開の判断は必ず人が持つ。だから安心して、思いつきの段階では何でも放り込める。</p>
+        <p>毎晩、公開できそうなノートが候補として下書きに並び、<strong>自分がチェックしたものだけ</strong>が本番に出る。トップページの地図（グラフ）は、毎週自動で描き直される。公開の判断は必ず人が持つ。だから安心して、思いつきの段階では何でも放り込める。</p>
       </div>
     </div>
   </section>
@@ -184,7 +240,20 @@
     </div>
   </section>
 
-  <section>
+  <section id="tools">
+    <p class="eyebrow">道具の役割</p>
+    <h2>道具ごとに、担うことを分ける</h2>
+    <p class="measure">一つの道具で全部をやろうとしない。会話は流れて消えるものとして扱い、残すべきものは正本へ移す。</p>
+    <table class="roles">
+      <tr><th>ChatGPT</th><td>声での壁打ち。思いついた瞬間の相手。別の視点をもらうセカンドオピニオン。</td></tr>
+      <tr><th>iPhoneショートカット</th><td>入口。会話をMarkdownにしてワンタップで保存する。</td></tr>
+      <tr><th>Obsidian</th><td>正本。すべてのノートと、その状態が置かれる知識の本体。</td></tr>
+      <tr><th>Claude Code</th><td>整える・つなげる・形にする。ノートの整形、ホームページづくり、公開作業。</td></tr>
+      <tr><th>m-note（このサイト）</th><td>見える形にする場所。思考の地図として俯瞰し、また考えるきっかけにする。</td></tr>
+    </table>
+  </section>
+
+  <section id="ai">
     <p class="eyebrow">AIとの関係</p>
     <h2>答えを集める道具から、<br>問いを育てるパートナーへ</h2>
     <div class="measure">
@@ -213,7 +282,7 @@
     </div>
   </section>
 
-  <section>
+  <section id="design">
     <p class="eyebrow">設計の勘所</p>
     <h2>続く仕組みにするために</h2>
     <div class="measure">
@@ -221,6 +290,10 @@
       <p>公開を全自動にしない。<strong>既定は非公開</strong>、仕事・個人情報に該当しそうなものは自動で警告・除外し、最後は人が中身を見て判断する——という多層の防波堤を置く。これがあるから、キャプチャの段階では躊躇なく何でも話せる。</p>
       <h3>全部を自動化しない</h3>
       <p>「整える」はAIに任せてよい。でも<strong>「何を公開するか」という判断は自分が持つ</strong>。自動化するのは面倒な作業だけ。意味づけと選択は手元に残す。</p>
+      <h3>自動化は、高度さより安定を</h3>
+      <p>凝った仕組みは壊れたときに止まる。毎晩・毎週の自動処理は、多少地味でも<strong>確実に回り続けること</strong>を優先する。</p>
+      <h3>見え方を増やしすぎない</h3>
+      <p>地図やビューは、増やすほど選ぶのに迷う。「このビューで何が分かるのか」を基準に、残すものを絞る。</p>
       <h3>毎日、少しずつ育てる</h3>
       <p>完璧を目指さない。会話は消えても、ノートとサイトに残せば知識は積み重なる。セカンドブレインは第二の脳ではなく、<strong>未来の自分への贈り物</strong>だ。</p>
     </div>
@@ -235,7 +308,22 @@
     </div>
   </section>
 
+  <section style="border-bottom:none;padding-top:0">
+    <p class="eyebrow">元になったつぶやき</p>
+    <nav class="src">
+      <a href="../musings/posts/p110.html">記録ではなく、循環をつくる<small>2026.09.06</small></a>
+      <a href="../musings/posts/p106.html">知識ではなく、考えの状態を残す<small>2026.08.30</small></a>
+      <a href="../musings/posts/p094.html">書くのではなく、呟く<small>2026.08.27</small></a>
+      <a href="../musings/posts/p080.html">会話ではなく、設計書を資産にする<small>2026.08.23</small></a>
+      <a href="../musings/posts/p070.html">使うほど、自分がわかっていく<small>2026.08.11</small></a>
+      <a href="../musings/posts/p047.html">探すのではなく、思い出したい<small>2026.08.03</small></a>
+      <a href="../musings/posts/p031.html">問いと、静けさ<small>2026.07.19</small></a>
+      <a href="../musings/posts/p006.html">このサイトはブログじゃない。「思考のOS」だ。<small>2026.07.20</small></a>
+    </nav>
+  </section>
+
   <footer>
+    <p class="related">あわせて読む：<a href="../way-of-life/">生き方の指針</a> ・ <a href="../life-view/">人生観</a> ・ <a href="../health-habits/">健康と習慣</a></p>
     <a class="back" href="../">← m-note トップへ戻る</a>
     <p class="disclaimer">専門家ではない個人が、自分の実践をまとめた個人的な記録です。内容の正確性を保証するものではありません。</p>
   </footer>
